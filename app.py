@@ -59,6 +59,12 @@ app.add_middleware(
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
+# Health check endpoint for Docker
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for container orchestration"""
+    return {"status": "healthy", "service": "PubHealthQA", "version": "1.0.0"}
+
 # Security
 security = HTTPBearer()
 

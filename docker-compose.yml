@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - MONGODB_URL=${MONGODB_URL:-mongodb+srv://an:dangan123@cluster.ju2jwqz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster}
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-here-please-change-in-production}
+      - ALGORITHM=${ALGORITHM:-HS256}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+    volumes:
+      - ./app/static/uploads:/app/app/static/uploads
+      - ./data/gold:/app/data/gold:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=10)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: pubhealth-network 
