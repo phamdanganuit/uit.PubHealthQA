@@ -155,7 +155,10 @@ We evaluate retrieval and answer quality using curated topics and metrics. The h
   <img src="img/demo.png" alt="Web demo screenshot" width="900" onerror="this.style.display='none'">
 </div>
 
-- Watch the full walkthrough on YouTube: [https://www.youtube.com/watch?v=JfyAS0z1ZVs](https://www.youtube.com/watch?v=JfyAS0z1ZVs)
+- Watch the full walkthrough on YouTube:
+[![YouTube](https://img.shields.io/badge/YouTube-Video-red?logo=youtube)](https://www.youtube.com/watch?v=JfyAS0z1ZVs)
+
+
 
 ## Project Structure
 
