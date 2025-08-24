@@ -1,27 +1,29 @@
 # 🩺 UIT@PubHealthQA — Public Health Q&A with LLMs + RAG
 
 <div align="center">
-  <img src="https://www.uit.edu.vn/sites/vi/files/banner_uit.png" alt="UIT banner" width="200" onerror="this.style.display='none'">
+  <img src="https://i.postimg.cc/XvZh2kcy/Chat-GPT-Image-Aug-24-2025-10-02-39-PM.png" alt="UIT banner" width="200" onerror="this.style.display='none'">
 </div>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-## 📑 Table of Contents
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Dataset Structure](#-dataset-structure)
-- [System Architecture (RAG Pipeline)](#-system-architecture-rag-pipeline)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Evaluation](#-evaluation)
-- [Project Structure](#-project-structure)
-- [Acknowledgements](#-acknowledgements)
-- [License](#-license)
-- [日本語の説明](#-日本語の説明)
 
-## 🧾 Overview
-`UIT@PubHealthQA` is a multi-stage project for building a high-quality, Vietnamese public health Question Answering system and dataset. It combines document acquisition, structured text extraction, and LLM-powered Retrieval-Augmented Generation (RAG) to deliver accurate answers grounded in official sources.
+## 📑 Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Dataset Structure](#dataset-structure)
+- [System Architecture (RAG Pipeline)](#system-architecture-rag-pipeline)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Evaluation](#evaluation)
+- [Demo](#demo)
+- [Project Structure](#project-structure)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
+- [日本語の説明](#日本語の説明)
+
+## Overview
+`UIT@PubHealthQA` is a multi-stage project for building a high-quality Vietnamese public health Question Answering (QA) system and dataset. It combines document acquisition, structured text extraction, and Retrieval-Augmented Generation (RAG) with LLMs to deliver accurate, citation-backed answers grounded in official sources.
 
 Each entry typically includes:
 - A user-submitted question (Vietnamese)
@@ -29,21 +31,21 @@ Each entry typically includes:
 - Metadata such as category and timestamp
 
 Project goals:
-- Make public health regulations easily accessible in Vietnamese
-- Ensure factuality by grounding in legal/official documents
+- Make public health regulations accessible in Vietnamese
+- Ensure factuality through grounded responses
 - Provide a scalable framework for domain-specific QA in Vietnamese
 
-## ✨ Key Features
+## Key Features
 
-- **Vietnamese-first RAG**: Tailored for public health documents in Vietnamese
-- **Bronze → Silver → Gold pipeline**: Clear, auditable data refinement
-- **Diverse sources**: Laws, decrees, circulars, and official Q&A
+- **Vietnamese-first RAG**: Tailored for public health documents
+- **Bronze → Silver → Gold pipeline**: Traceable, auditable data refinement
+- **Diverse sources**: Laws, decrees, circulars, official Q&A
 - **Web chat UI**: Interactive interface with citations
-- **Bloom taxonomy Q&A**: Questions generated across cognitive levels
-- **Vector search**: FAISS-based retrieval for speed and quality
-- **GROQ LLM integration**: Fast, cost-effective generation
+- **Bloom taxonomy Q&A**: Educational question generation
+- **FAISS VectorDB**: Fast semantic search
+- **GROQ LLM integration**: High-throughput, low-latency generation
 
-## 📊 Dataset Structure
+## Dataset Structure
 
 Bronze–Silver–Gold quality tiers:
 
@@ -53,12 +55,12 @@ Bronze–Silver–Gold quality tiers:
 | 🥈 **Silver** | Cleaned and structured data with unified schema |
 | 🥇 **Gold** | Validated Q&A and an optimized VectorDB for retrieval |
 
-## 🏗 System Architecture (RAG Pipeline)
+## System Architecture (RAG Pipeline)
 
 The system is implemented as a modular RAG pipeline:
 
 <div align="center">
-  <img src="img/image.png" alt="RAG pipeline diagram" width="900" onerror="this.style.display='none'">
+  <img src="img/evaluation.png" alt="RAG pipeline diagram" width="900" onerror="this.style.display='none'">
 </div>
 
 1. Data acquisition and text/structure extraction
@@ -67,7 +69,7 @@ The system is implemented as a modular RAG pipeline:
 4. VectorDB construction and retrieval
 5. LLM generation with grounded context (RAG)
 
-## 🔧 Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8+
@@ -106,7 +108,7 @@ The system is implemented as a modular RAG pipeline:
    mkdir -p data/bronze data/silver data/gold logs/question_generation
    ```
 
-## 🚀 Usage
+## Usage
 
 ### Data processing pipeline
 
@@ -139,42 +141,70 @@ python app.py
 
 Open your browser at `http://localhost:8000`.
 
-Demo screenshot:
+## Evaluation
 
-![demo](img/demo.png)
-
-## 📈 Evaluation
-
-We evaluate retrieval and answer quality using curated topics and metrics. A high-level evaluation summary is shown below:
+We evaluate retrieval and answer quality using curated topics and metrics. The high-level process of collect → optimize → evaluate is illustrated below.
 
 <div align="center">
-  <img src="img/evaluation.png" alt="Evaluation results" width="900" onerror="this.style.display='none'">
+  <img src="img/pipeline.png" alt="Collect-Optimize-Evaluate pipeline" width="900" onerror="this.style.display='none'">
 </div>
 
-## 🗂️ Project Structure
+## Demo
+
+<div align="center">
+  <img src="img/demo.png" alt="Web demo screenshot" width="900" onerror="this.style.display='none'">
+</div>
+
+- Watch the full walkthrough on YouTube: [https://www.youtube.com/watch?v=JfyAS0z1ZVs](https://www.youtube.com/watch?v=JfyAS0z1ZVs)
+
+## Project Structure
 
 ```
-uit.PubHealthQA/
-├── app/
-│   ├── static/
-│   └── templates/
-├── data/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
-├── notebooks/
-├── src/
-│   ├── preprocessing/
-│   ├── utils/
-│   └── vector_store/
-├── tests/
-├── app.py
-├── requirements.txt
-├── setup_groq_key.py
-└── README.md
+UIT@PubHealthQA/
+│
+├── app/                           # Web application files
+│   ├── static/                    # CSS, JavaScript, and images
+│   └── templates/                 # HTML templates
+│
+├── data/                          # Dataset files organized by processing stage
+│   ├── bronze/                    # Raw crawled data
+│   │   ├── raw_QAPair.csv         # Raw QA pairs from Ministry of Health
+│   │   └── raw_Policy.json        # Raw policy documents
+│   ├── silver/                    # Cleaned and structured data
+│   │   └── Policy.json            # Cleaned policy documents
+│   │   
+│   └── gold/                      # Vector databases and embeddings
+│       ├── db_faiss_phapluat_yte/ # FAISS vector store
+│       └──QAPair.csv              #
+├── logs/                          # Log files and generated outputs
+│   └── question_generation/       # Generated QA pairs
+│
+├── notebooks/                     # Jupyter notebooks for exploration
+│   ├── 01-exploration.ipynb
+│   └── 02-cleaning-transform.ipynb
+│
+├── src/                           # Source code
+│   ├── data_acquisition/          # Data collection modules
+│   ├── preprocessing/             # Text cleaning and processing
+│   │   ├── document_processor.py  # Document cleaning utilities
+│   │   ├── text_splitter.py       # Text chunking utilities 
+│   │   └── chunking.py            # Chunking strategies
+│   ├── utils/                     # Utility functions
+│   ├── vector_store/              # Vector database management
+│   ├── 01-pipeline_ingestingPolicy.py    # Data collection pipeline
+│   ├── 01-pipeline_ingestingQAPair.py    # QA pair collection pipeline
+│   ├── 02-pipeline_preprocessing.py      # Data cleaning pipeline
+│   ├── 02-pipeline_vectorDB.py           # Vector database creation pipeline
+│   └── 03-pipeline_generatingQuestion.py # QA generation pipeline
+│
+├── tests/                         # Unit and integration tests
+├── app.py                         # Main web application
+├── requirements.txt               # Python dependencies
+├── setup_groq_key.py              # API key setup utility
+└── README.md                      # This documentation
 ```
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 Advisors:
 - Ph.D. Nguyen Gia Tuan Anh — University of Information Technology, VNUHCM
@@ -187,16 +217,16 @@ Development team:
 
 With thanks to GROQ for LLM access and tooling support.
 
-## 📄 License
+## License
 
 MIT License. See `LICENSE` for details.
 
 ---
 
-## 🌏 日本語の説明
+## 日本語の説明
 
 ### プロジェクト概要
-`UIT@PubHealthQA` は、ベトナム語の公衆衛生分野に特化した質問応答（QA）システム／データセットです。公式文書に基づく取得・構造化処理と、RAG（Retrieval-Augmented Generation）を組み合わせ、根拠付きで正確な回答を生成します。
+`UIT@PubHealthQA` は、ベトナム語の公衆衛生分野に特化した質問応答（QA）システム／データセットです。公式文書の取得・構造化と、RAG（Retrieval-Augmented Generation）を組み合わせ、根拠付きで正確な回答を生成します。
 
 目的：
 - ベトナム語で公衆衛生の規程・手続きを分かりやすく提供
@@ -208,7 +238,7 @@ MIT License. See `LICENSE` for details.
 - Bronze→Silver→Gold の段階的パイプライン
 - 法令・通達・公式Q&Aなど多様なソース
 - 引用表示付きのWebチャットUI
-- Bloom分類に基づく多様な設問生成
+- Bloom分類に基づく設問生成
 - FAISSベースの高速ベクトル検索
 - GROQ LLMの統合
 
@@ -221,7 +251,7 @@ MIT License. See `LICENSE` for details.
 
 ### システム構成（RAGパイプライン）
 <div align="center">
-  <img src="img/image.png" alt="RAGパイプライン図" width="900" onerror="this.style.display='none'">
+  <img src="img/rag_pipeline.png" alt="RAGパイプライン図" width="900" onerror="this.style.display='none'">
 </div>
 
 1) 取得・抽出 → 2) 後処理・タグ付け → 3) チャンク化と埋め込み → 4) VectorDB 構築 → 5) LLM生成（RAG）
@@ -246,13 +276,16 @@ python src/02-pipeline_vectorDB.py
 python src/03-pipeline_generatingQuestion.py
 ```
 
-### Webインターフェースの起動
+### Webインターフェースの起動とデモ
 ```bash
 python app.py
 ```
 ブラウザで `http://localhost:8000` を開いてください。
 
-評価サマリー：
 <div align="center">
-  <img src="img/evaluation.png" alt="評価サマリー" width="900" onerror="this.style.display='none'">
+  <img src="img/demo_screenshot.png" alt="デモ画面のスクリーンショット" width="900" onerror="this.style.display='none'">
 </div>
+
+動画デモ（YouTube）: [https://www.youtube.com/watch?v=JfyAS0z1ZVs](https://www.youtube.com/watch?v=JfyAS0z1ZVs)
+
+評価プロセス（収集→最適化→評価）の図：
