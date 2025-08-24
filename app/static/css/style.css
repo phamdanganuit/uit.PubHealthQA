@@ -519,4 +519,60 @@ form button:hover::after {
         transform: scale(2);
         opacity: 0;
     }
+}
+
+/* Chat History Scrolling - Approach đơn giản */
+#chat-history-list {
+    max-height: calc(100vh - 500px); /* Tính toán dựa trên viewport height */
+    overflow-y: auto; /* Thanh cuộn dọc */
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #2196f3 #e3f2fd; /* Firefox */
+    -webkit-overflow-scrolling: touch; /* Safari/iOS */
+    padding-right: 4px; /* Tránh bị che bởi scrollbar */
+}
+
+/* Tùy chỉnh thanh cuộn cho lịch sử chat - Chrome, Edge */
+#chat-history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-history-list::-webkit-scrollbar-track {
+    background: #f1f3f4;
+    border-radius: 6px;
+}
+
+#chat-history-list::-webkit-scrollbar-thumb {
+    background-color: #2196f3;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+#chat-history-list::-webkit-scrollbar-thumb:hover {
+    background-color: #1976d2;
+}
+
+/* Responsive adjustments cho chat history */
+@media (max-width: 1400px) {
+    #chat-history-list {
+        max-height: calc(100vh - 450px);
+    }
+}
+
+@media (max-width: 1200px) {
+    #chat-history-list {
+        max-height: calc(100vh - 400px);
+    }
+}
+
+@media (max-width: 992px) {
+    #chat-history-list {
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    #chat-history-list {
+        max-height: 300px;
+    }
 } 
